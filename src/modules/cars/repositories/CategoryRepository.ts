@@ -6,11 +6,20 @@ export interface ICreateCategoryDTO {
   description: string;
 }
 
-export class CategoryReposiroty implements ICategoryRepository {
+export class CategoryRepository implements ICategoryRepository {
   private categories: Category[];
 
-  constructor() {
+  private static INSTANCE: ICategoryRepository;
+
+  private constructor() {
     this.categories = [];
+  }
+
+  public static getInstance() {
+    if (!CategoryRepository.INSTANCE) {
+      CategoryRepository.INSTANCE = new CategoryRepository();
+    }
+    return this.INSTANCE;
   }
 
   public create({ name, description }: ICreateCategoryDTO) {
