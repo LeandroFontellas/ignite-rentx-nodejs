@@ -1,5 +1,9 @@
 import { Specification } from "../model/Specification";
-import { ICreateSpecificationDTO } from "./SpecificationRepository";
+
+export interface ICreateSpecificationDTO {
+  name: string;
+  description: string;
+}
 
 export interface ISpecificationRepository {
   findByName(name: string): Specification | undefined;
