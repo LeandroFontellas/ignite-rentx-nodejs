@@ -6,7 +6,9 @@ export class ImportFileCategoryController {
   constructor(private importFileCategoryUseCase: ImportFileCategoryUseCase) {}
   handle(request: Request, response: Response) {
     const { file } = request;
-    this.importFileCategoryUseCase.execute(String(file));
+
+    this.importFileCategoryUseCase.execute(file);
+
     return response.send();
   }
 }
