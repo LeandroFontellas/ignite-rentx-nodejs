@@ -8,15 +8,15 @@ interface IRequest {
 export class CreateSpecificationUseCase {
   constructor(private specificationRepository: ISpecificationRepository) {}
 
-  execute({ name, description }: IRequest) {
+  async execute({ name, description }: IRequest) {
     const specificationAlreadyExists =
-      this.specificationRepository.findByName(name);
+      await this.specificationRepository.findByName(name);
 
     if (specificationAlreadyExists) {
       throw new Error("Specification already exists!");
     }
 
-    const specification = this.specificationRepository.create({
+    const specification = await this.specificationRepository.create({
       name,
       description,
     });

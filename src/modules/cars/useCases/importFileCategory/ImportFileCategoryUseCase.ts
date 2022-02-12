@@ -44,10 +44,10 @@ export class ImportFileCategoryUseCase {
       categories.map(async (category) => {
         const { name, description } = category;
 
-        const existCategory = this.categoryRepository.findByName(name);
+        const existCategory = await this.categoryRepository.findByName(name);
 
         if (!existCategory) {
-          this.categoryRepository.create({
+          await this.categoryRepository.create({
             name,
             description,
           });

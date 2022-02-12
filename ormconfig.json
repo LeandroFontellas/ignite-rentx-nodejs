@@ -5,6 +5,11 @@
   "username": "postgres",
   "password": "docker",
   "database": "rentx",
-  "synchronize": true,
-  "logging": false
+  "migrations":["./src/database/migrations/*.ts"],
+  "entities": [
+    "./src/modules/**/entities/*.ts"
+ ],
+  "cli":{
+    "migrationsDir":"./src/database/migrations"
+  }
 }

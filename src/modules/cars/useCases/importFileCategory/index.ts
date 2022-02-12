@@ -2,10 +2,10 @@ import { CategoryRepository } from "../../repositories/implementations/CategoryR
 import { ImportFileCategoryController } from "./ImportFileCategoryController";
 import { ImportFileCategoryUseCase } from "./ImportFileCategoryUseCase";
 
-const categoryRepository = CategoryRepository.getInstance();
-const importFileCategoryUseCase = new ImportFileCategoryUseCase(
-  categoryRepository
-);
-export const importFileCategoryController = new ImportFileCategoryController(
-  importFileCategoryUseCase
-);
+export default () => {
+  const categoryRepository = new CategoryRepository();
+  const importFileCategoryUseCase = new ImportFileCategoryUseCase(
+    categoryRepository
+  );
+  return new ImportFileCategoryController(importFileCategoryUseCase);
+};
