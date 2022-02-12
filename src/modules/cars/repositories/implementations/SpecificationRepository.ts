@@ -6,7 +6,7 @@ import {
   ISpecificationRepository,
 } from "../ISpecificationRepository";
 
-export class SpecificationReposiroty implements ISpecificationRepository {
+export class SpecificationRepository implements ISpecificationRepository {
   private repository: Repository<Specification>;
 
   constructor() {
