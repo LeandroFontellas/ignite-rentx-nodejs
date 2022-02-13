@@ -11,6 +11,10 @@ export class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.repository.findOne({ email });
+  }
+
   async create(data: ICreateUserDTO): Promise<User> {
     /**
      * Não vou fazer desestruturação pq vou achar que o controller e service está enviando

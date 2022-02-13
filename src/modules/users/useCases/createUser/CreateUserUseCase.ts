@@ -13,6 +13,12 @@ export class CreateUserUseCase {
     private userRepository: IUserRepository
   ) {}
   async execute(data: IRequest) {
+    const emailExists = await this.userRepository.findByEmail(data.email);
+
+    if (emailExists) {
+      throw new Error("Email already exists");
+    }
+
     const hashedPassword = await hash(data.password, 8);
 
     const newUser = await this.userRepository.create({
