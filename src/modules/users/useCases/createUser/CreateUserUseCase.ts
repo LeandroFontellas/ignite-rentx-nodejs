@@ -1,9 +1,9 @@
+import { ICreateUserDTO } from "@modules/users/dtos/ICreateUserDTO";
+import { IUserRepository } from "@modules/users/repositories/IUserRepository";
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../shared/errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { AppError } from "@shared/errors/AppError";
 
 type IRequest = ICreateUserDTO;
 

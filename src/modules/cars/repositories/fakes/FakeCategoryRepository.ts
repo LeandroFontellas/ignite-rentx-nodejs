@@ -1,5 +1,6 @@
-import { ICreateCategoryDTO } from "../../dtos/ICreateCategoryDTO";
-import { Category } from "../../entities/Category";
+import { ICreateCategoryDTO } from "@modules/cars/dtos/ICreateCategoryDTO";
+import { Category } from "@modules/cars/entities/Category";
+
 import { ICategoryRepository } from "../ICategoryRepository";
 
 export class CategoryRepository implements ICategoryRepository {
