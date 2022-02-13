@@ -19,13 +19,22 @@ export class UserRepository implements IUserRepository {
     return this.repository.findOne({ email });
   }
 
-  async create(data: ICreateUserDTO): Promise<User> {
-    /**
-     * Não vou fazer desestruturação pq vou achar que o controller e service está enviando
-     * os dados de forma correta para o repositorio. Já que é papel do controller delegar
-     * as informações corretamente para os lugares
-     */
-    const user = this.repository.create(data);
+  async create({
+    id,
+    name,
+    email,
+    password,
+    driver_license,
+    avatar,
+  }: ICreateUserDTO): Promise<User> {
+    const user = this.repository.create({
+      id,
+      name,
+      email,
+      password,
+      driver_license,
+      avatar,
+    });
 
     return this.repository.save(user);
   }
