@@ -6,7 +6,10 @@ declare namespace Express {
       name: string;
       email: string;
       password: string;
+      driver_license: string;
+      avatar: string;
       isAdmin: boolean;
+      created_at: Date;
     };
   }
 }

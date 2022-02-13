@@ -1,3 +1,4 @@
+import uploadConfig from "@config/upload";
 import { CreateCategoryController } from "@modules/cars/useCases/createCategory/CreateCategoryController";
 import { ImportFileCategoryController } from "@modules/cars/useCases/importFileCategory/ImportFileCategoryController";
 import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
@@ -6,13 +7,11 @@ import multer from "multer";
 
 const categoriesRoutes = Router();
 
-const upload = multer({
-  dest: "./tmp",
-});
-
 const createCategoryController = new CreateCategoryController();
 const listCategoriesController = new ListCategoriesController();
 const importFileCategoryController = new ImportFileCategoryController();
+
+const upload = multer(uploadConfig.upload("./tmp"));
 
 categoriesRoutes.post("/", createCategoryController.handle);
 
