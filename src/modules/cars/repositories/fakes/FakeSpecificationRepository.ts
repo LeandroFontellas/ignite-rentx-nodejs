@@ -1,8 +1,6 @@
+import { ICreateSpecificationDTO } from "../../dtos/ICreateSpecificationDTO";
 import { Specification } from "../../entities/Specification";
-import {
-  ICreateSpecificationDTO,
-  ISpecificationRepository,
-} from "../ISpecificationRepository";
+import { ISpecificationRepository } from "../ISpecificationRepository";
 
 export class SpecificationReposiroty implements ISpecificationRepository {
   private specifications: Specification[];
@@ -20,8 +18,10 @@ export class SpecificationReposiroty implements ISpecificationRepository {
     return this.INSTANCE;
   }
 
-  public create({ name, description }: ICreateSpecificationDTO) {
-    const newSpecification = new Specification({
+  async create({ name, description }: ICreateSpecificationDTO) {
+    const newSpecification = new Specification();
+
+    Object.assign(newSpecification, {
       name,
       description,
       created_at: new Date(),
@@ -32,11 +32,11 @@ export class SpecificationReposiroty implements ISpecificationRepository {
     return newSpecification;
   }
 
-  public list() {
+  async list() {
     return this.specifications;
   }
 
-  public findByName(name: string) {
+  async findByName(name: string) {
     const specification = this.specifications.find(
       (specification) => specification.name === name
     );
