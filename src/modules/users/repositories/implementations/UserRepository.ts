@@ -11,6 +11,10 @@ export class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
+  async findByPk(id: string): Promise<User | undefined> {
+    return this.repository.findOne(id);
+  }
+
   async findByEmail(email: string): Promise<User | undefined> {
     return this.repository.findOne({ email });
   }
