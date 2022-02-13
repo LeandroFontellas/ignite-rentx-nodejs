@@ -1,6 +1,7 @@
 import { User } from "@modules/users/entities/User";
 import { IUserRepository } from "@modules/users/repositories/IUserRepository";
 import { inject, injectable } from "tsyringe";
+import { deleteFile } from "utils/file";
 
 import { AppError } from "@shared/errors/AppError";
 
@@ -20,6 +21,10 @@ export class UpdateUserAvatarUseCase {
     const updatedUser = { ...user };
 
     if (avatarFile) {
+      if (user.avatar) {
+        await deleteFile(`./tmp/avatar/${user.avatar}`);
+      }
+
       updatedUser.avatar = avatarFile;
 
       await this.userRepository.create(updatedUser);
