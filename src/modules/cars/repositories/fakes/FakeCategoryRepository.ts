@@ -6,17 +6,8 @@ import { ICategoryRepository } from "../ICategoryRepository";
 export class CategoryRepository implements ICategoryRepository {
   private categories: Category[];
 
-  private static INSTANCE: ICategoryRepository;
-
-  private constructor() {
+  constructor() {
     this.categories = [];
-  }
-
-  public static getInstance() {
-    if (!CategoryRepository.INSTANCE) {
-      CategoryRepository.INSTANCE = new CategoryRepository();
-    }
-    return this.INSTANCE;
   }
 
   async create({ name, description }: ICreateCategoryDTO) {

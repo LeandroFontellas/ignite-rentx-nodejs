@@ -20,7 +20,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(router);
 
 app.use(
-  (error: Error, request: Request, response: Response, _next: NextFunction) => {
+  (error: Error, _req: Request, response: Response, _next: NextFunction) => {
     if (error instanceof AppError) {
       return response.status(error.statusCode).json({ message: error.message });
     }
