@@ -1,9 +1,9 @@
-import { User } from "@modules/users/entities/User";
+import { User } from "@modules/users/infra/typeorm/entities/User";
 import { IUserRepository } from "@modules/users/repositories/IUserRepository";
 import { inject, injectable } from "tsyringe";
-import { deleteFile } from "utils/file";
 
 import { AppError } from "@shared/errors/AppError";
+import { deleteFile } from "@shared/utils/file";
 
 interface IRequest {
   user: User;

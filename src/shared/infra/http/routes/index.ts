@@ -1,7 +1,7 @@
-import { categoriesRoutes } from "@modules/cars/routes/categories.routes";
-import { specificationsRoutes } from "@modules/cars/routes/specification.routes";
-import { authenticateRoutes } from "@modules/users/routes/authenticate.routes";
-import { usersRoutes } from "@modules/users/routes/users.routes";
+import { categoriesRoutes } from "@modules/cars/infra/http/routes/categories.routes";
+import { specificationsRoutes } from "@modules/cars/infra/http/routes/specification.routes";
+import { authenticateRoutes } from "@modules/users/infra/http/routes/authenticate.routes";
+import { usersRoutes } from "@modules/users/infra/http/routes/users.routes";
 import { Router } from "express";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
